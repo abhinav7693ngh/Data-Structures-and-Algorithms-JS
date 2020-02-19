@@ -1,7 +1,7 @@
 function collectOdd(arr){
     let myarr = [];
     if(arr.length === 0){
-        return;
+        return myarr;
     }
     if(arr[0]%2 != 0){
         myarr.push(arr[0]);
