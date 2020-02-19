@@ -4,7 +4,7 @@ function binarySearch(arr,me){
     var middle = Math.floor((left+right)/2);
     console.log(left,right,middle);
     while(arr[middle]!=me){
-        if(left>right){
+        if(left>=right){
             return -1;
         }
         if(me  < arr[middle]){
@@ -18,4 +18,4 @@ function binarySearch(arr,me){
     return middle;
 }
 const myarray = [1,2,3,4,5,6,7];
-console.log(binarySearch(myarray,7));
+console.log(binarySearch(myarray,6));
