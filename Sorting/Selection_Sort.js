@@ -1,4 +1,4 @@
-console.log('This is insertion sort');
+console.log('This is Selection sort');
 
 function insertion(arr){
     let min = 0;
