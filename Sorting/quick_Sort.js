@@ -9,7 +9,6 @@ function pivot(arr,start,end){
             pointer = pointer+1;
         }
     }
-    console.log(arr);
     return pointer;
 }
 
@@ -17,7 +16,6 @@ function pivot(arr,start,end){
 function quickSort(arr, start = 0, end = arr.length - 1){
     if(start<end){
         breakPoint = pivot(arr, start, end);
-        console.log(breakPoint);
         quickSort(arr, start, breakPoint - 1);
         quickSort(arr, breakPoint + 1, end);
     }
@@ -26,4 +24,4 @@ function quickSort(arr, start = 0, end = arr.length - 1){
 
 
 const my  = [5,4,2,1,3];
-quickSort(my,0,my.length-1);
+console.log(quickSort(my));
