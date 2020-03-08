@@ -1,5 +1,4 @@
 console.log('This is Radix Sort for base 10 numbers !!');
-
 function count(num){
     let counting = 0;
     while(num!=0){
@@ -8,9 +7,6 @@ function count(num){
     }
     return counting;
 }
-
-
-
 function radixSort(){
     let myans = []
     for(let k=0;k<10;k++){
