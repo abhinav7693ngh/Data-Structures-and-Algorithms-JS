@@ -27,7 +27,7 @@ class SinglyLinkedList{
     }
     pop(){
         if(this.length == 0){
-            console.log('Empty, hence can\'t pop!!');
+            console.log('Empty');
         }
         else if(this.length==1){
             this.head = null;
@@ -46,6 +46,20 @@ class SinglyLinkedList{
             --this.length;
         }
     }
+    shift(){
+        if(this.length == 0){
+            console.log('Empty');
+        }
+        else if(this.length == 1){
+            this.head = null;
+            this.tail = null ;
+            --this.length;
+        }
+        else if(this.length > 1){
+            this.head = this.head.next;
+            --this.length;
+        }
+    }
 }
 
 
@@ -53,11 +67,12 @@ const myLinked = new SinglyLinkedList();
 myLinked.push(20);
 myLinked.push(30);
 console.log(myLinked);
-myLinked.pop();
+myLinked.shift();
 console.log(myLinked);
-myLinked.pop();
+myLinked.shift();
 console.log(myLinked);
-myLinked.pop();
+myLinked.shift();
+console.log(myLinked);
 
 
 /*
