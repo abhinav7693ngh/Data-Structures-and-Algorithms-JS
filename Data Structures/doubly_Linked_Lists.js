@@ -85,8 +85,8 @@ class DoublyLinkedList{
                 trav = trav.next;
                 i++;
             }
-            console.log(trav.val);
         }
+        return trav;
     }
     set(index,value){
         index = parseInt(index);
@@ -161,6 +161,28 @@ class DoublyLinkedList{
             ++this.length;
         }
     }
+    remove(index){
+        if(this.length == 0){
+            console.log('Empty');
+        }
+        else if(index<0 || index>=this.length){
+            console.log('Cannot remove !');
+        }
+        else if(index == 0){
+            this.shift();
+        }
+        else if(index == (this.length-1)){
+            this.pop();
+        }
+        else if(this.length > 0){
+            let toDelete = this.get(index);
+            let prevNode = toDelete.prev;
+            let NextNode = toDelete.next;
+            prevNode.next = NextNode;
+            NextNode.prev = prevNode;
+            --this.length;
+        }
+    }
 }
 
 const list = new DoublyLinkedList();
@@ -170,6 +192,5 @@ list.push(20);
 list.push(30);
 list.push(40);
 list.push(50);
-list.insert(2,25);
-list.insert(5,45);
+list.remove(1);
 console.log(list);
