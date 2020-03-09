@@ -177,6 +177,22 @@ class SinglyLinkedList{
             --this.length;
         }
     }
+    reverse(){
+        let prev = this.head;
+        let current = this.head.next;
+        let myNext = this.head.next.next;
+        while(current.next != null){
+            current.next = prev;
+            prev = current;
+            current = myNext;
+            myNext = myNext.next;
+        }
+        current.next = prev;
+        let temp = this.tail;
+        this.tail = this.head;
+        this.head = temp;
+        this.tail.next = null;
+    }
 }
 
 
@@ -185,11 +201,7 @@ myLinked.push(10);
 myLinked.push(20);
 myLinked.push(30);
 myLinked.push(40);
-myLinked.push(50);
-myLinked.push(60);
-myLinked.push(70);
-myLinked.push(80);
-myLinked.remove(4);
+myLinked.reverse();
 console.log(myLinked);
 
 
