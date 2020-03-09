@@ -73,11 +73,27 @@ class DoublyLinkedList{
         }
         ++this.length;
     }
+    get(index){
+        let trav = this.head;
+        index = parseInt(index);
+        let i=0;
+        if(index<0 || (index+1)>this.length){
+            console.log('Cannot found !');
+        }
+        else{
+            while(i<index){
+                trav = trav.next;
+                i++;
+            }
+            console.log(trav.val);
+        }
+    }
 }
 
 const list = new DoublyLinkedList();
-list.unShift(30);
-list.unShift(20);
+list.push(20);
+list.push(30);
+list.push(40);
 list.unShift(10);
-
+list.get(-1);
 console.log(list);
