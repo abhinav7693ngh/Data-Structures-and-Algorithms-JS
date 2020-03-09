@@ -60,18 +60,28 @@ class SinglyLinkedList{
             --this.length;
         }
     }
+    unShift(val){
+        const newNode =  new Node(val);
+        if(this.length == 0){
+            this.head = newNode;
+            this.tail = newNode;
+            ++this.length;
+        }
+        else if(this.length > 0){
+            newNode.next = this.head;
+            this.head = newNode;
+            ++this.length;
+        }
+    }
 }
 
 
 const myLinked = new SinglyLinkedList();
 myLinked.push(20);
 myLinked.push(30);
-console.log(myLinked);
-myLinked.shift();
-console.log(myLinked);
-myLinked.shift();
-console.log(myLinked);
-myLinked.shift();
+myLinked.unShift(40);
+myLinked.pop();
+myLinked.unShift(50);
 console.log(myLinked);
 
 
