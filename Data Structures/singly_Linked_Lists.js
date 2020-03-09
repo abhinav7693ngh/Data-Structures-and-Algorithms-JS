@@ -73,16 +73,31 @@ class SinglyLinkedList{
             ++this.length;
         }
     }
+    get(index){
+        index = parseInt(index);
+        let i=0;
+        if(this.length < (index+1) || index<0){
+            console.log('Does not exist !');
+        }
+        else{
+            let myNode = this.head;
+            while(i<index){
+                myNode = myNode.next;
+                i++;
+            }
+            console.log(myNode.val);
+        }
+    }
 }
 
 
 const myLinked = new SinglyLinkedList();
 myLinked.push(20);
 myLinked.push(30);
-myLinked.unShift(40);
-myLinked.pop();
-myLinked.unShift(50);
-console.log(myLinked);
+myLinked.push(40);
+myLinked.push(50);
+myLinked.push(60);
+myLinked.get(0);
 
 
 /*
