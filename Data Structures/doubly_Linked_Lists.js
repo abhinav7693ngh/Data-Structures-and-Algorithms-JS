@@ -78,7 +78,7 @@ class DoublyLinkedList{
         index = parseInt(index);
         let i=0;
         if(index<0 || (index+1)>this.length){
-            console.log('Cannot found !');
+            console.log('Cannot get because not found !');
         }
         else{
             while(i<index){
@@ -88,12 +88,40 @@ class DoublyLinkedList{
             console.log(trav.val);
         }
     }
+    set(index,value){
+        index = parseInt(index);
+        if(index<0 || (index+1)>this.length){
+            console.log('Cannot set because not found !');
+        }
+        else{
+            let indexFromEnd = (this.length-1) - index;
+            if(index<=indexFromEnd){
+                let i=0;
+                let trav = this.head;
+                while(i<index){
+                    trav = trav.next;
+                    i++;
+                }
+                trav.val = value;
+            }
+            else{
+                let i=0;
+                let trav = this.tail;
+                while(i<indexFromEnd){
+                    trav = trav.prev;
+                    i++;
+                }
+                trav.val = value;
+            }
+        }
+    }
 }
 
 const list = new DoublyLinkedList();
+list.push(10);
 list.push(20);
 list.push(30);
 list.push(40);
-list.unShift(10);
-list.get(-1);
+list.push(50);
+list.set(4,60);
 console.log(list);
