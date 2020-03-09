@@ -88,6 +88,21 @@ class SinglyLinkedList{
             console.log(myNode.val);
         }
     }
+    set(index,value){
+        index = parseInt(index);
+        let i=0;
+        if(this.length < (index+1) || index<0){
+            console.log('Does not exist !');
+        }
+        else{
+            let myNode = this.head;
+            while(i<index){
+                myNode = myNode.next;
+                i++;
+            }
+            myNode.val = value;
+        }
+    }
 }
 
 
@@ -98,6 +113,8 @@ myLinked.push(40);
 myLinked.push(50);
 myLinked.push(60);
 myLinked.get(0);
+myLinked.set(0,100);
+console.log(myLinked);
 
 
 /*
