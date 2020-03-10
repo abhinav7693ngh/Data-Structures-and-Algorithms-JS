@@ -47,6 +47,11 @@ class Stack{
         if(this.length == 0){
             console.log('Stack is empty !');
         }
+        else if(this.length == 1){
+            this.start = null;
+            this.end = null;
+            --this.length;
+        }
         else{
             let newStart = this.start.next;
             this.start = newStart;
