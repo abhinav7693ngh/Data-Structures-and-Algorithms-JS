@@ -1,3 +1,4 @@
+console.log('Binary Search Trees');
 class Node{
     constructor(value){
         this.value = value;
