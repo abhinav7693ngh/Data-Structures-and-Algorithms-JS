@@ -43,6 +43,15 @@ class Tree {
             }
         }
     }
+    
+    static PostOrder(current, visited) {
+        if (current == null) {
+            return;
+        }
+        Tree.PostOrder(current.left, visited);
+        Tree.PostOrder(current.right, visited);
+        visited.push(current.value);
+    }
     static PreOrder(current,visited){
         if(current == null){
             return;
