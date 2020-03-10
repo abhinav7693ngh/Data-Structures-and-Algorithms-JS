@@ -47,9 +47,9 @@ class Tree {
         if (current == null) {
             return;
         }
-        Tree.PostOrder(current.left, visited);
+        Tree.InOrder(current.left, visited);
         visited.push(current.value);
-        Tree.PostOrder(current.right, visited);
+        Tree.InOrder(current.right, visited);
     }
     static PostOrder(current, visited) {
         if (current == null) {
