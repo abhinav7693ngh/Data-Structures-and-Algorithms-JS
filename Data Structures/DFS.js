@@ -43,7 +43,14 @@ class Tree {
             }
         }
     }
-    
+    static InOrder(current, visited) {
+        if (current == null) {
+            return;
+        }
+        Tree.PostOrder(current.left, visited);
+        visited.push(current.value);
+        Tree.PostOrder(current.right, visited);
+    }
     static PostOrder(current, visited) {
         if (current == null) {
             return;
