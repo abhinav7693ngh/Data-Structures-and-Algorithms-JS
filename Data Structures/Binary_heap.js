@@ -1,4 +1,7 @@
-console.log('This is Binary Heap!');
+console.log('This is implementation of Binary Heap!');
+
+
+// ===== Below is implementation of max binary heap ===== //
 
 class MaxBinaryHeap{
     constructor(){
