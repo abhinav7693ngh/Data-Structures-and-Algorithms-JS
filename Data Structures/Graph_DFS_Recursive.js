@@ -43,16 +43,22 @@ class Graph {
         }
     }
     static visited = {};
-    DFS(vertex){
+    static DFSHelper(vertex,myAns){
         if(Graph.visited[vertex]){
             return;
         }
         else{
             Graph.visited[vertex] = true;
+            myAns.push(vertex);
         }
-        for(let i of this.adjancencyList[vertex]){
-            this.DFS(i);
+        for(let i of myGraph.adjancencyList[vertex]){
+            Graph.DFSHelper(i,myAns);
         }
+    }
+    DFS(vertex){
+        let myAns = [];
+        Graph.DFSHelper(vertex,myAns);
+        return myAns;
     }
 }
 
@@ -70,6 +76,6 @@ myGraph.addEdge("D", "F");
 myGraph.addEdge("F", "E");
 myGraph.addEdge("E", "C");
 myGraph.addEdge("C", "A");
-myGraph.DFS("A");
-console.log(Graph.visited);
+const myDFS = myGraph.DFS("A");
 console.log(myGraph);
+console.log(myDFS);
