@@ -16,6 +16,17 @@ class Graph{
             console.log('Please enter a valid vertex');
         }
     }
+    removeEdge(vertex1,vertex2){
+        if(this.adjancencyList[vertex1] && this.adjancencyList[vertex2]){
+            const index21 = this.adjancencyList[vertex1].findIndex(element => element == vertex2);
+            this.adjancencyList[vertex1].splice(index21,1);
+            const index12 = this.adjancencyList[vertex2].findIndex(element => element == vertex1);
+            this.adjancencyList[vertex2].splice(index12,1);
+        }
+        else{
+            console.log('Please enter a valid vertex');
+        }
+    }
 }
 
 
@@ -27,4 +38,5 @@ myGraph.addVertex("D");
 myGraph.addVertex("E");
 myGraph.addVertex("F");
 myGraph.addEdge("A","B");
+myGraph.removeEdge("A","B");
 console.log(myGraph);
