@@ -1,5 +1,28 @@
 console.log('Implementation of Dijkstra\'s Algorithm and weighted graph');
 
+
+class PriorityQueue{
+    constructor(){
+        this.values = [];
+    }
+    enqueue(val,prior){
+        this.values.push({value : val,priority : prior});
+        this.sort();
+    }
+    dequeue(){
+        if(this.values.length != 0 ){
+            return this.values.shift();
+        }
+        else{
+            return null;
+        }
+    }
+    sort(){
+        this.values.sort((a,b) => a.priority - b.priority);
+    }
+}
+
+
 class WeightedGraph{
     constructor() {
         this.adjacencyList = {};
@@ -50,6 +73,14 @@ class WeightedGraph{
     }
 }
 
+let myQueue = new PriorityQueue();
+myQueue.enqueue("A",0);
+myQueue.enqueue("B",4);
+myQueue.enqueue("C",2);
+myQueue.enqueue("D",1);
+console.log(myQueue.dequeue());
+
+
 let myGraph = new WeightedGraph();
 myGraph.addVertex("A");
 myGraph.addVertex("B");
@@ -57,14 +88,14 @@ myGraph.addVertex("C");
 myGraph.addVertex("D");
 myGraph.addVertex("E");
 myGraph.addVertex("F");
-myGraph.addEdge("A", "B",10);
-myGraph.addEdge("B", "D",20);
-myGraph.addEdge("D", "E",15);
-myGraph.addEdge("D", "F",5);
-myGraph.addEdge("F", "E",20);
-myGraph.addEdge("E", "C",30);
-myGraph.addEdge("C", "A",6);
-myGraph.removeVertex("A");
+myGraph.addEdge("A", "B",4);
+myGraph.addEdge("B", "E", 3);
+myGraph.addEdge("E", "F", 1);
+myGraph.addEdge("E", "D", 3);
+myGraph.addEdge("F", "D", 1);
+myGraph.addEdge("F", "C", 4);
+myGraph.addEdge("D", "C", 2);
+myGraph.addEdge("C", "A", 2);
 console.log(myGraph);
 
 
