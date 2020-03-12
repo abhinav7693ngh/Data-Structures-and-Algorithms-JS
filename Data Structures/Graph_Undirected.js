@@ -5,7 +5,9 @@ class Graph{
         this.adjancencyList = {};
     }
     addVertex(myVertex){
-        this.adjancencyList[myVertex] = [];
+        if(!this.adjancencyList[myVertex]){
+            this.adjancencyList[myVertex] = [];
+        }
     }
     addEdge(vertex1,vertex2){
         if(this.adjancencyList[vertex1] && this.adjancencyList[vertex2]){
