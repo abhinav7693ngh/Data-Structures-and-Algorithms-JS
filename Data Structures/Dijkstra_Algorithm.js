@@ -6,19 +6,21 @@ class PriorityQueue{
         this.values = [];
     }
     enqueue(val,prior){
-        this.values.push({value : val,priority : prior});
+        this.values.push({node : val,distance : prior});
         this.sort();
     }
     dequeue(){
         if(this.values.length != 0 ){
-            return this.values.shift();
+            let tobeReturned =  this.values.shift();
+            this.sort();
+            return tobeReturned;
         }
         else{
             return null;
         }
     }
     sort(){
-        this.values.sort((a,b) => a.priority - b.priority);
+        this.values.sort((a,b) => a.distance - b.distance);
     }
 }
 
@@ -68,17 +70,63 @@ class WeightedGraph{
             delete this.adjacencyList[vertex];
         }
         else{
-            console.log('Please enter a valic node');
+            console.log('Please enter a valid node');
+        }
+    }
+    dijkstra(start, end){
+        if(this.adjacencyList[start] && this.adjacencyList[end]){
+            let myans = [];
+            let optimumDistance = 0;
+            let visited = {};
+            let previous = {};
+            let myDistanceQueue = new PriorityQueue();
+            for (let i in this.adjacencyList) {
+                if (i == start) {
+                    myDistanceQueue.enqueue(i,0);
+                }
+                else{
+                    myDistanceQueue.enqueue(i,Infinity);
+                }
+            }
+            for(let i in this.adjacencyList){
+                previous[i] = null;
+            }
+            let visiting = myDistanceQueue.values[0];
+            while(myDistanceQueue.values.length > 0){
+                    for(let j of this.adjacencyList[visiting.node]){
+                        if(!visited[j.node]){
+                            let updatedDistance = visiting.distance + j.weight;
+                            let myDistanceNode = myDistanceQueue.values.find(ele => ele.node == j.node);
+                            if(updatedDistance < myDistanceNode.distance){
+                                myDistanceNode.distance = updatedDistance;
+                            }
+                            previous[j.node] = visiting.node;
+                        }
+                    }
+                visited[visiting.node] = true;
+                visiting = myDistanceQueue.dequeue();
+            }
+            myans.push(end);
+            while (previous[end]) {
+                myans.push(previous[end]);
+                end = previous[end];
+            }
+            myans = myans.reverse();
+            console.log(myans);
+            for(let i in myans){
+                if(parseInt(i)+1==myans.length){
+                    break;
+                }
+                let myWeight = this.adjacencyList[myans[i]].find(ele => ele.node==myans[parseInt(i)+1]);
+                optimumDistance = optimumDistance + myWeight.weight;
+            }
+            console.log(`Distance = ${optimumDistance}`);
+        }
+        else{
+            console.log('Please enter valid vertex');
         }
     }
 }
-
-let myQueue = new PriorityQueue();
-myQueue.enqueue("A",0);
-myQueue.enqueue("B",4);
-myQueue.enqueue("C",2);
-myQueue.enqueue("D",1);
-console.log(myQueue.dequeue());
 
 
 let myGraph = new WeightedGraph();
@@ -96,6 +144,7 @@ myGraph.addEdge("F", "D", 1);
 myGraph.addEdge("F", "C", 4);
 myGraph.addEdge("D", "C", 2);
 myGraph.addEdge("C", "A", 2);
-console.log(myGraph);
+myGraph.dijkstra("A","E");
+
 
 
