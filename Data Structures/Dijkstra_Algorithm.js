@@ -33,6 +33,21 @@ class WeightedGraph{
             console.log('Please enter a valid edge');
         }
     }
+    removeVertex(vertex){
+        if(this.adjacencyList[vertex]){
+            for (let i in this.adjacencyList) {
+                let myarr = this.adjacencyList[i];
+                let index = myarr.findIndex(ele => ele.node == vertex);
+                if (index != -1) {
+                    myarr.splice(index, 1);
+                }
+            }
+            delete this.adjacencyList[vertex];
+        }
+        else{
+            console.log('Please enter a valic node');
+        }
+    }
 }
 
 let myGraph = new WeightedGraph();
@@ -49,7 +64,7 @@ myGraph.addEdge("D", "F",5);
 myGraph.addEdge("F", "E",20);
 myGraph.addEdge("E", "C",30);
 myGraph.addEdge("C", "A",6);
-myGraph.removeEdge("A","B");
+myGraph.removeVertex("A");
 console.log(myGraph);
 
 
