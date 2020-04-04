@@ -99,12 +99,14 @@ class WeightedGraph{
                             let myDistanceNode = myDistanceQueue.values.find(ele => ele.node == j.node);
                             if(updatedDistance < myDistanceNode.distance){
                                 myDistanceNode.distance = updatedDistance;
+                                previous[j.node] = visiting.node;
                             }
-                            previous[j.node] = visiting.node;
+                            
                         }
                     }
                 visited[visiting.node] = true;
                 visiting = myDistanceQueue.dequeue();
+                console.log(visiting);
             }
             myans.push(end);
             while (previous[end]) {

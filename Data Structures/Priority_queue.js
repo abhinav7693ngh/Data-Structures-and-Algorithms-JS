@@ -144,8 +144,8 @@ class PriorityQueue {
                 }
             }
         }
-        }
     }
+}
 
 let minHeapPQ = new PriorityQueue();
 minHeapPQ.enqueue(41,7);
